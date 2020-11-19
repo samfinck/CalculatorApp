@@ -1,38 +1,229 @@
-.App {
+.calculator-container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: grid;
+  width: 400px;
+  grid-template-columns: repeat(4, 25%);
+  grid-gap: 5px;
+  grid-auto-rows: auto;
+  grid-template-areas:
+    "a a a a"
+    "b b c d"
+    "e f g h"
+    "i j k l"
+    "m n o p"
+    "q q r s";
+}
+
+.calculator-container > *:hover {
+  cursor: pointer;
+}
+
+.entry-div {
+  grid-area: a;
+  border: 1px solid black;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding-top: 6px;
+  font-size: large;
+}
+
+.entry-div:hover {
+  cursor: text;
+}
+
+.clear-div {
+  grid-area: b;
+  border: 1px solid black;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.last-value-clear-div {
+  grid-area: c;
+  border: 1px solid black;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.equals-div {
+  grid-area: s;
+  border: 1px solid black;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.addition-div {
+  grid-area: d;
+  border: 1px solid black;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.addition-div-highlight {
+  border: 1px solid red;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.subtraction-div {
+  grid-area: h;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.subtraction-div-highlight {
+  border: 1px solid red;
+}
+
+.multiplication-div {
+  grid-area: l;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.multiplication-div-highlight {
+  border: 1px solid red;
+}
+
+.division-div {
+  grid-area: p;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.division-div-highlight {
+  border: 1px solid red;
+}
+
+.point-div {
+  grid-area: r;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.point-div:hover {
+  grid-area: r;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.zero-div {
+  grid-area: q;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.zero-div:hover {
+  grid-area: q;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.one-div {
+  grid-area: m;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.one-div:hover {
+  grid-area: m;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.two-div {
+  grid-area: n;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.two-div:hover {
+  grid-area: n;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.three-div {
+  grid-area: o;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.three-div:hover {
+  grid-area: o;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.four-div {
+  grid-area: i;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.four-div:hover {
+  grid-area: i;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.five-div {
+  grid-area: j;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.five-div:hover {
+  grid-area: j;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.six-div {
+  grid-area: k;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.six-div:hover {
+  grid-area: k;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.seven-div {
+  grid-area: e;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.seven-div:hover {
+  grid-area: e;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.eight-div {
+  grid-area: f;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.eight-div:hover {
+  grid-area: f;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
+}
+
+.nine-div {
+  grid-area: g;
+  border: 1px solid black;
+  color: black;
+  text-align: center;
+}
+
+.nine-div:hover {
+  grid-area: g;
+  border: 1px solid rgb(235, 127, 193);
+  text-align: center;
 }
