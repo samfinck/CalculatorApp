@@ -52,7 +52,7 @@ export default function CalculatorComponent() {
       setEqualsPressed(true);
     }
     if (subtractionCapture !== null) {
-      setCalculationEntry((prev) => +prev - +subtractionCapture);
+      setCalculationEntry((prev) => +subtractionCapture - +prev);
       setSubtractionCapture(null);
       setFunctionPressed(true);
       setPointPressed(false);
@@ -81,10 +81,10 @@ export default function CalculatorComponent() {
       setFunctionPressed(true);
       setPointPressed(false);
       setEqualsPressed(false);
-    } else if (
-      +subtractionCapture + +multiplicationCapture + +divisionCapture !==
-      0
-    ) {
+      setSubtractionCapture(null);
+      setMultiplicationCapture(null);
+      setDivisionCapture(null);
+    } else if (a !== 0) {
       setAdditionCapture(a);
       setSubtractionCapture(null);
       setMultiplicationCapture(null);
@@ -99,6 +99,9 @@ export default function CalculatorComponent() {
       setFunctionPressed(true);
       setPointPressed(false);
       setEqualsPressed(false);
+      setAdditionCapture(null);
+      setMultiplicationCapture(null);
+      setDivisionCapture(null);
     } else if (
       +additionCapture + +multiplicationCapture + +divisionCapture !==
       0
@@ -117,6 +120,9 @@ export default function CalculatorComponent() {
       setFunctionPressed(true);
       setPointPressed(false);
       setEqualsPressed(false);
+      setAdditionCapture(null);
+      setSubtractionCapture(null);
+      setDivisionCapture(null);
     } else if (
       +additionCapture + +subtractionCapture + +divisionCapture !==
       0
@@ -129,11 +135,14 @@ export default function CalculatorComponent() {
   };
   const onDivisionButton = () => {
     var a = +additionCapture + subtractionCapture + +multiplicationCapture;
-    if (a === 0) {
+    if (a === 0 && calculationEntry !== 0) {
       setDivisionCapture(calculationEntry);
       setFunctionPressed(true);
       setPointPressed(false);
       setEqualsPressed(false);
+      setAdditionCapture(null);
+      setSubtractionCapture(null);
+      setMultiplicationCapture(null);
     } else if (
       +additionCapture + +subtractionCapture + +multiplicationCapture !==
       0
@@ -297,7 +306,7 @@ export default function CalculatorComponent() {
         }`}
         onClick={onSubtractionButton}
       >
-        -
+        −
       </div>
 
       <div
