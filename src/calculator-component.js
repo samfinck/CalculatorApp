@@ -75,31 +75,74 @@ export default function CalculatorComponent() {
   };
 
   const onAdditionButton = () => {
-    setAdditionCapture(calculationEntry);
-    setFunctionPressed(true);
-    setPointPressed(false);
-    setEqualsPressed(false);
+    var a = +subtractionCapture + +multiplicationCapture + +divisionCapture;
+    if (a === 0) {
+      setAdditionCapture(calculationEntry);
+      setFunctionPressed(true);
+      setPointPressed(false);
+      setEqualsPressed(false);
+    } else if (
+      +subtractionCapture + +multiplicationCapture + +divisionCapture !==
+      0
+    ) {
+      setAdditionCapture(a);
+      setSubtractionCapture(null);
+      setMultiplicationCapture(null);
+      setDivisionCapture(null);
+    }
   };
 
   const onSubtractionButton = () => {
-    setSubtractionCapture(calculationEntry);
-    setFunctionPressed(true);
-    setPointPressed(false);
-    setEqualsPressed(false);
+    var a = +additionCapture + +multiplicationCapture + +divisionCapture;
+    if (a === 0) {
+      setSubtractionCapture(calculationEntry);
+      setFunctionPressed(true);
+      setPointPressed(false);
+      setEqualsPressed(false);
+    } else if (
+      +additionCapture + +multiplicationCapture + +divisionCapture !==
+      0
+    ) {
+      setSubtractionCapture(a);
+      setAdditionCapture(null);
+      setMultiplicationCapture(null);
+      setDivisionCapture(null);
+    }
   };
 
   const onMultiplicationButton = () => {
-    setMultiplicationCapture(calculationEntry);
-    setFunctionPressed(true);
-    setPointPressed(false);
-    setEqualsPressed(false);
+    var a = +additionCapture + +subtractionCapture + +divisionCapture;
+    if (a === 0) {
+      setMultiplicationCapture(calculationEntry);
+      setFunctionPressed(true);
+      setPointPressed(false);
+      setEqualsPressed(false);
+    } else if (
+      +additionCapture + +subtractionCapture + +divisionCapture !==
+      0
+    ) {
+      setMultiplicationCapture(a);
+      setAdditionCapture(null);
+      setSubtractionCapture(null);
+      setDivisionCapture(null);
+    }
   };
-
   const onDivisionButton = () => {
-    setDivisionCapture(calculationEntry);
-    setFunctionPressed(true);
-    setPointPressed(false);
-    setEqualsPressed(false);
+    var a = +additionCapture + subtractionCapture + +multiplicationCapture;
+    if (a === 0) {
+      setDivisionCapture(calculationEntry);
+      setFunctionPressed(true);
+      setPointPressed(false);
+      setEqualsPressed(false);
+    } else if (
+      +additionCapture + +subtractionCapture + +multiplicationCapture !==
+      0
+    ) {
+      setDivisionCapture(a);
+      setAdditionCapture(null);
+      setSubtractionCapture(null);
+      setMultiplicationCapture(null);
+    }
   };
 
   const onPointPress = () => {

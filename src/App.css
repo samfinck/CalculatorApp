@@ -29,7 +29,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  padding-top: 6px;
+  padding-top: 5px;
+  padding-bottom: 2px;
   font-size: large;
 }
 
@@ -92,7 +93,7 @@
 }
 
 .division-div-highlight {
-  border: 1px solid red;
+  border: 1px solid rgb(223, 61, 161);
 }
 
 .point-div {
