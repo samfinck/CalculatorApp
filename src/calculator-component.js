@@ -277,7 +277,9 @@ export default function CalculatorComponent() {
 
   return (
     <div className="calculator-container">
-      <div className="entry-div">{calculationEntry}</div>
+      <div className={`entry-div ${equalsPressed ? "entry-div-equals" : ""}`}>
+        {calculationEntry}
+      </div>
 
       <div className="clear-div" onClick={onClearLastButton}>
         Clear Last Entry
