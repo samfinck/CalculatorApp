@@ -31,6 +31,7 @@ export default function CalculatorComponent() {
     }
     if (equalsPressed) {
       setCalculationEntry(0);
+      setEqualsPressed(false);
     }
   };
 
@@ -41,6 +42,7 @@ export default function CalculatorComponent() {
     setSubtractionCapture(null);
     setMultiplicationCapture(null);
     setDivisionCapture(null);
+    setEqualsPressed(false);
   };
 
   const onEqualsButton = () => {
