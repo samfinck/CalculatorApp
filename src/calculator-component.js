@@ -282,7 +282,7 @@ export default function CalculatorComponent() {
       </div>
 
       <div className="clear-div" onClick={onClearLastButton}>
-        Clear Last Entry
+        Clear Last
       </div>
 
       <div className="last-value-clear-div" onClick={onAllClearButton}>

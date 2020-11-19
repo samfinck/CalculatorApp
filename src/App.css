@@ -1,12 +1,13 @@
+.App {
+  display: flex;
+  justify-content: center;
+}
 .calculator-container {
-  margin: 0;
+  width: 25%;
+  height: 50%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  top: 25%;
   display: grid;
-  width: 400px;
   grid-template-columns: repeat(4, 25%);
   grid-gap: 5px;
   grid-auto-rows: auto;
@@ -28,11 +29,9 @@
   border: 1px solid black;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
-  padding-top: 5px;
-  padding-bottom: 2px;
-  font-size: xx-large;
   margin: 1px;
+  font-size: 300%;
+  align-items: flex-end;
 }
 
 .entry-div:hover {
@@ -69,7 +68,7 @@
 }
 
 .addition-div-highlight {
-  border: 1px solid red;
+  border: 1px solid rgb(223, 61, 161);
 }
 
 .subtraction-div {
@@ -79,7 +78,7 @@
 }
 
 .subtraction-div-highlight {
-  border: 1px solid red;
+  border: 1px solid rgb(223, 61, 161);
 }
 
 .multiplication-div {
@@ -89,7 +88,7 @@
 }
 
 .multiplication-div-highlight {
-  border: 1px solid red;
+  border: 1px solid rgb(223, 61, 161);
 }
 
 .division-div {
