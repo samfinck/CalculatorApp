@@ -32,6 +32,7 @@
   margin: 1px;
   font-size: 300%;
   align-items: flex-end;
+  min-height: 85.22px;
 }
 
 .entry-div:hover {
@@ -41,6 +42,10 @@
 .entry-div-equals {
   border: 2px solid rgb(39, 163, 14);
   margin: 0px;
+}
+
+.entry-div-large {
+  font-size: 200%;
 }
 
 .clear-div {

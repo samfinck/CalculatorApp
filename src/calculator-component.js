@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function CalculatorComponent() {
   const [calculationEntry, setCalculationEntry] = useState(0);
@@ -6,6 +6,8 @@ export default function CalculatorComponent() {
   const [functionPressed, setFunctionPressed] = useState(false);
 
   const [equalsPressed, setEqualsPressed] = useState(false);
+
+  const [largeNumber, setLargeNumber] = useState(false);
 
   const [additionCapture, setAdditionCapture] = useState(null);
 
@@ -16,6 +18,8 @@ export default function CalculatorComponent() {
   const [divisionCapture, setDivisionCapture] = useState(null);
 
   const [pointPressed, setPointPressed] = useState(false);
+
+  const entryDiv = useRef(null);
 
   const onClearLastButton = () => {
     if (calculationEntry === 0) {
@@ -47,6 +51,10 @@ export default function CalculatorComponent() {
 
   const onEqualsButton = () => {
     if (additionCapture !== null) {
+      let a = (+additionCapture + +calculationEntry).toString();
+      if (`${a.length}` > 8) {
+        setLargeNumber(true);
+      }
       setCalculationEntry((prev) => +prev + +additionCapture);
       setAdditionCapture(null);
       setFunctionPressed(true);
@@ -54,6 +62,10 @@ export default function CalculatorComponent() {
       setEqualsPressed(true);
     }
     if (subtractionCapture !== null) {
+      let a = (+subtractionCapture - +calculationEntry).toString();
+      if (`${a.length}` > 8) {
+        setLargeNumber(true);
+      }
       setCalculationEntry((prev) => +subtractionCapture - +prev);
       setSubtractionCapture(null);
       setFunctionPressed(true);
@@ -61,6 +73,10 @@ export default function CalculatorComponent() {
       setEqualsPressed(true);
     }
     if (multiplicationCapture !== null) {
+      let a = (+multiplicationCapture * +calculationEntry).toString();
+      if (`${a.length}` > 8) {
+        setLargeNumber(true);
+      }
       setCalculationEntry((prev) => +prev * +multiplicationCapture);
       setMultiplicationCapture(null);
       setFunctionPressed(true);
@@ -68,11 +84,22 @@ export default function CalculatorComponent() {
       setEqualsPressed(true);
     }
     if (divisionCapture !== null) {
-      setCalculationEntry((prev) => +divisionCapture / +prev);
-      setDivisionCapture(null);
-      setFunctionPressed(true);
-      setPointPressed(false);
-      setEqualsPressed(true);
+      let a = (+divisionCapture / +calculationEntry).toString();
+      if (`${a.length}` > 8) {
+        console.log(`${a} ${a.length}`);
+        let b = a.substring(0, 8);
+        setCalculationEntry(b);
+        setDivisionCapture(null);
+        setFunctionPressed(true);
+        setPointPressed(false);
+        setEqualsPressed(true);
+      } else {
+        setCalculationEntry((prev) => +divisionCapture / +prev);
+        setDivisionCapture(null);
+        setFunctionPressed(true);
+        setPointPressed(false);
+        setEqualsPressed(true);
+      }
     }
   };
 
@@ -165,6 +192,7 @@ export default function CalculatorComponent() {
       setFunctionPressed(false);
       setEqualsPressed(false);
       setPointPressed(true);
+      setLargeNumber(false);
     }
     if (
       calculationEntry !== 0 &&
@@ -187,11 +215,17 @@ export default function CalculatorComponent() {
     if (functionPressed || equalsPressed) {
       setCalculationEntry(0);
       setFunctionPressed(false);
+      setLargeNumber(false);
     }
   };
 
   const onOnePress = () => {
-    if (functionPressed || calculationEntry === "0" || calculationEntry === 0) {
+    if (
+      functionPressed ||
+      calculationEntry === "0" ||
+      calculationEntry === 0 ||
+      equalsPressed
+    ) {
       setCalculationEntry(1);
       setFunctionPressed(false);
       setEqualsPressed(false);
@@ -201,77 +235,125 @@ export default function CalculatorComponent() {
   };
 
   const onTwoPress = () => {
-    if (functionPressed || calculationEntry === "0" || calculationEntry === 0) {
+    if (
+      functionPressed ||
+      calculationEntry === "0" ||
+      calculationEntry === 0 ||
+      equalsPressed
+    ) {
       setCalculationEntry(2);
       setFunctionPressed(false);
       setEqualsPressed(false);
+      setLargeNumber(false);
     } else {
       setCalculationEntry((prev) => prev + "2");
     }
   };
 
   const onThreePress = () => {
-    if (functionPressed || calculationEntry === "0" || calculationEntry === 0) {
+    if (
+      functionPressed ||
+      calculationEntry === "0" ||
+      calculationEntry === 0 ||
+      equalsPressed
+    ) {
       setCalculationEntry(3);
       setFunctionPressed(false);
       setEqualsPressed(false);
+      setLargeNumber(false);
     } else {
       setCalculationEntry((prev) => prev + "3");
     }
   };
 
   const onFourPress = () => {
-    if (functionPressed || calculationEntry === "0" || calculationEntry === 0) {
+    if (
+      functionPressed ||
+      calculationEntry === "0" ||
+      calculationEntry === 0 ||
+      equalsPressed
+    ) {
       setCalculationEntry(4);
       setFunctionPressed(false);
       setEqualsPressed(false);
+      setLargeNumber(false);
     } else {
       setCalculationEntry((prev) => prev + "4");
     }
   };
   const onFivePress = () => {
-    if (functionPressed || calculationEntry === "0" || calculationEntry === 0) {
+    if (
+      functionPressed ||
+      calculationEntry === "0" ||
+      calculationEntry === 0 ||
+      equalsPressed
+    ) {
       setCalculationEntry(5);
       setFunctionPressed(false);
       setEqualsPressed(false);
+      setLargeNumber(false);
     } else {
       setCalculationEntry((prev) => prev + "5");
     }
   };
 
   const onSixPress = () => {
-    if (functionPressed || calculationEntry === "0" || calculationEntry === 0) {
+    if (
+      functionPressed ||
+      calculationEntry === "0" ||
+      calculationEntry === 0 ||
+      equalsPressed
+    ) {
       setCalculationEntry(6);
       setFunctionPressed(false);
       setEqualsPressed(false);
+      setLargeNumber(false);
     } else {
       setCalculationEntry((prev) => prev + "6");
     }
   };
 
   const onSevenPress = () => {
-    if (functionPressed || calculationEntry === "0" || calculationEntry === 0) {
+    if (
+      functionPressed ||
+      calculationEntry === "0" ||
+      calculationEntry === 0 ||
+      equalsPressed
+    ) {
       setCalculationEntry(7);
       setFunctionPressed(false);
       setEqualsPressed(false);
+      setLargeNumber(false);
     } else {
       setCalculationEntry((prev) => prev + "7");
     }
   };
   const onEightPress = () => {
-    if (functionPressed || calculationEntry === "0" || calculationEntry === 0) {
+    if (
+      functionPressed ||
+      calculationEntry === "0" ||
+      calculationEntry === 0 ||
+      equalsPressed
+    ) {
       setCalculationEntry(8);
       setFunctionPressed(false);
       setEqualsPressed(false);
+      setLargeNumber(false);
     } else {
       setCalculationEntry((prev) => prev + "8");
     }
   };
   const onNinePress = () => {
-    if (functionPressed || calculationEntry === "0" || calculationEntry === 0) {
+    if (
+      functionPressed ||
+      calculationEntry === "0" ||
+      calculationEntry === 0 ||
+      equalsPressed
+    ) {
       setCalculationEntry(9);
       setFunctionPressed(false);
       setEqualsPressed(false);
+      setLargeNumber(false);
     } else {
       setCalculationEntry((prev) => prev + "9");
     }
@@ -279,101 +361,107 @@ export default function CalculatorComponent() {
 
   return (
     <div className="calculator-container">
-      <div className={`entry-div ${equalsPressed ? "entry-div-equals" : ""}`}>
+      <div
+        className={`entry-div ${equalsPressed ? "entry-div-equals" : ""} ${
+          largeNumber ? "entry-div-large" : ""
+        }`}
+        size="6"
+        ref={entryDiv}
+      >
         {calculationEntry}
       </div>
 
-      <div className="clear-div" onClick={onClearLastButton}>
+      <button className="clear-div" onClick={onClearLastButton}>
         Clear Last
-      </div>
+      </button>
 
-      <div className="last-value-clear-div" onClick={onAllClearButton}>
+      <button className="last-value-clear-div" onClick={onAllClearButton}>
         AC
-      </div>
+      </button>
 
-      <div className="equals-div" onClick={onEqualsButton}>
+      <button className="equals-div" onClick={onEqualsButton}>
         =
-      </div>
+      </button>
 
-      <div
+      <button
         className={`addition-div ${
           additionCapture !== null ? "addition-div-highlight" : ""
         }`}
         onClick={onAdditionButton}
       >
         +
-      </div>
+      </button>
 
-      <div
+      <button
         className={`subtraction-div ${
           subtractionCapture !== null ? "subtraction-div-highlight" : ""
         }`}
         onClick={onSubtractionButton}
       >
         −
-      </div>
+      </button>
 
-      <div
+      <button
         className={`multiplication-div ${
           multiplicationCapture !== null ? "multiplication-div-highlight" : ""
         }`}
         onClick={onMultiplicationButton}
       >
         ×
-      </div>
+      </button>
 
-      <div
+      <button
         className={`division-div ${
           divisionCapture !== null ? "division-div-highlight" : ""
         }`}
         onClick={onDivisionButton}
       >
         ÷
-      </div>
+      </button>
 
-      <div className="point-div" onClick={onPointPress} id="point-div">
+      <button className="point-div" onClick={onPointPress} id="point-div">
         .
-      </div>
+      </button>
 
-      <div className="zero-div" onClick={onZeroPress}>
+      <button className="zero-div" onClick={onZeroPress}>
         0
-      </div>
+      </button>
 
-      <div className="one-div" onClick={onOnePress}>
+      <button className="one-div" onClick={onOnePress}>
         1
-      </div>
+      </button>
 
-      <div className="two-div" onClick={onTwoPress}>
+      <button className="two-div" onClick={onTwoPress}>
         2
-      </div>
+      </button>
 
-      <div className="three-div" onClick={onThreePress}>
+      <button className="three-div" onClick={onThreePress}>
         3
-      </div>
+      </button>
 
-      <div className="four-div" onClick={onFourPress}>
+      <button className="four-div" onClick={onFourPress}>
         4
-      </div>
+      </button>
 
-      <div className="five-div" onClick={onFivePress}>
+      <button className="five-div" onClick={onFivePress}>
         5
-      </div>
+      </button>
 
-      <div className="six-div" onClick={onSixPress}>
+      <button className="six-div" onClick={onSixPress}>
         6
-      </div>
+      </button>
 
-      <div className="seven-div" onClick={onSevenPress}>
+      <button className="seven-div" onClick={onSevenPress}>
         7
-      </div>
+      </button>
 
-      <div className="eight-div" onClick={onEightPress}>
+      <button className="eight-div" onClick={onEightPress}>
         8
-      </div>
+      </button>
 
-      <div className="nine-div" onClick={onNinePress}>
+      <button className="nine-div" onClick={onNinePress}>
         9
-      </div>
+      </button>
     </div>
   );
 }
