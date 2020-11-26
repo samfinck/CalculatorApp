@@ -296,7 +296,7 @@ export default function CalculatorComponent() {
         .
       </button>
 
-      <button className="zero-div" onClick={onZeroPress}>
+      <button title="0" className="zero-div" onClick={onZeroPress}>
         0
       </button>
       <NumberButton digit={1} className="one-div" onClick={onDigitPress} />
