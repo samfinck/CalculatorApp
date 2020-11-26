@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NumberButton from './NumberButton'
 
 export default function CalculatorComponent() {
   const [calculationEntry, setCalculationEntry] = useState(0);
@@ -102,7 +103,7 @@ export default function CalculatorComponent() {
   };
 
   const onAdditionButton = () => {
-    var a = +subtractionCapture + +multiplicationCapture + +divisionCapture;
+    const a = +subtractionCapture + +multiplicationCapture + +divisionCapture;
     if (a === 0) {
       setAdditionCapture(calculationEntry);
       setFunctionPressed(true);
@@ -217,143 +218,18 @@ export default function CalculatorComponent() {
     }
   };
 
-  const onOnePress = () => {
+  const onDigitPress = (digit) => {
     if (
       functionPressed ||
       calculationEntry === "0" ||
       calculationEntry === 0 ||
       equalsPressed
     ) {
-      setCalculationEntry(1);
+      setCalculationEntry(digit);
       setFunctionPressed(false);
       setEqualsPressed(false);
     } else {
-      setCalculationEntry((prev) => prev + "1");
-    }
-  };
-
-  const onTwoPress = () => {
-    if (
-      functionPressed ||
-      calculationEntry === "0" ||
-      calculationEntry === 0 ||
-      equalsPressed
-    ) {
-      setCalculationEntry(2);
-      setFunctionPressed(false);
-      setEqualsPressed(false);
-      setLargeNumber(false);
-    } else {
-      setCalculationEntry((prev) => prev + "2");
-    }
-  };
-
-  const onThreePress = () => {
-    if (
-      functionPressed ||
-      calculationEntry === "0" ||
-      calculationEntry === 0 ||
-      equalsPressed
-    ) {
-      setCalculationEntry(3);
-      setFunctionPressed(false);
-      setEqualsPressed(false);
-      setLargeNumber(false);
-    } else {
-      setCalculationEntry((prev) => prev + "3");
-    }
-  };
-
-  const onFourPress = () => {
-    if (
-      functionPressed ||
-      calculationEntry === "0" ||
-      calculationEntry === 0 ||
-      equalsPressed
-    ) {
-      setCalculationEntry(4);
-      setFunctionPressed(false);
-      setEqualsPressed(false);
-      setLargeNumber(false);
-    } else {
-      setCalculationEntry((prev) => prev + "4");
-    }
-  };
-  const onFivePress = () => {
-    if (
-      functionPressed ||
-      calculationEntry === "0" ||
-      calculationEntry === 0 ||
-      equalsPressed
-    ) {
-      setCalculationEntry(5);
-      setFunctionPressed(false);
-      setEqualsPressed(false);
-      setLargeNumber(false);
-    } else {
-      setCalculationEntry((prev) => prev + "5");
-    }
-  };
-
-  const onSixPress = () => {
-    if (
-      functionPressed ||
-      calculationEntry === "0" ||
-      calculationEntry === 0 ||
-      equalsPressed
-    ) {
-      setCalculationEntry(6);
-      setFunctionPressed(false);
-      setEqualsPressed(false);
-      setLargeNumber(false);
-    } else {
-      setCalculationEntry((prev) => prev + "6");
-    }
-  };
-
-  const onSevenPress = () => {
-    if (
-      functionPressed ||
-      calculationEntry === "0" ||
-      calculationEntry === 0 ||
-      equalsPressed
-    ) {
-      setCalculationEntry(7);
-      setFunctionPressed(false);
-      setEqualsPressed(false);
-      setLargeNumber(false);
-    } else {
-      setCalculationEntry((prev) => prev + "7");
-    }
-  };
-  const onEightPress = () => {
-    if (
-      functionPressed ||
-      calculationEntry === "0" ||
-      calculationEntry === 0 ||
-      equalsPressed
-    ) {
-      setCalculationEntry(8);
-      setFunctionPressed(false);
-      setEqualsPressed(false);
-      setLargeNumber(false);
-    } else {
-      setCalculationEntry((prev) => prev + "8");
-    }
-  };
-  const onNinePress = () => {
-    if (
-      functionPressed ||
-      calculationEntry === "0" ||
-      calculationEntry === 0 ||
-      equalsPressed
-    ) {
-      setCalculationEntry(9);
-      setFunctionPressed(false);
-      setEqualsPressed(false);
-      setLargeNumber(false);
-    } else {
-      setCalculationEntry((prev) => prev + "9");
+      setCalculationEntry((prev) => prev + digit.toString());
     }
   };
 
@@ -363,6 +239,7 @@ export default function CalculatorComponent() {
         className={`entry-div ${equalsPressed ? "entry-div-equals" : ""} ${
           largeNumber ? "entry-div-large" : ""
         }`}
+        title="answer"
       >
         {calculationEntry}
       </div>
@@ -419,45 +296,18 @@ export default function CalculatorComponent() {
         .
       </button>
 
-      <button className="zero-div" onClick={onZeroPress}>
+      <button title="0" className="zero-div" onClick={onZeroPress}>
         0
       </button>
-
-      <button className="one-div" onClick={onOnePress}>
-        1
-      </button>
-
-      <button className="two-div" onClick={onTwoPress}>
-        2
-      </button>
-
-      <button className="three-div" onClick={onThreePress}>
-        3
-      </button>
-
-      <button className="four-div" onClick={onFourPress}>
-        4
-      </button>
-
-      <button className="five-div" onClick={onFivePress}>
-        5
-      </button>
-
-      <button className="six-div" onClick={onSixPress}>
-        6
-      </button>
-
-      <button className="seven-div" onClick={onSevenPress}>
-        7
-      </button>
-
-      <button className="eight-div" onClick={onEightPress}>
-        8
-      </button>
-
-      <button className="nine-div" onClick={onNinePress}>
-        9
-      </button>
+      <NumberButton digit={1} className="one-div" onClick={onDigitPress} />
+      <NumberButton digit={2} className="two-div" onClick={onDigitPress} />
+      <NumberButton digit={3} className="three-div" onClick={onDigitPress} />
+      <NumberButton digit={4} className="four-div" onClick={onDigitPress} />
+      <NumberButton digit={5} className="five-div" onClick={onDigitPress} />
+      <NumberButton digit={6} className="six-div" onClick={onDigitPress} />
+      <NumberButton digit={7} className="seven-div" onClick={onDigitPress} />
+      <NumberButton digit={8} className="eight-div" onClick={onDigitPress} />
+      <NumberButton digit={9} className="nine-div" onClick={onDigitPress} />
     </div>
   );
 }
