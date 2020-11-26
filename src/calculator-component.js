@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 export default function CalculatorComponent() {
   const [calculationEntry, setCalculationEntry] = useState(0);
@@ -18,8 +18,6 @@ export default function CalculatorComponent() {
   const [divisionCapture, setDivisionCapture] = useState(null);
 
   const [pointPressed, setPointPressed] = useState(false);
-
-  const entryDiv = useRef(null);
 
   const onClearLastButton = () => {
     if (calculationEntry === 0) {
@@ -365,8 +363,6 @@ export default function CalculatorComponent() {
         className={`entry-div ${equalsPressed ? "entry-div-equals" : ""} ${
           largeNumber ? "entry-div-large" : ""
         }`}
-        size="6"
-        ref={entryDiv}
       >
         {calculationEntry}
       </div>
