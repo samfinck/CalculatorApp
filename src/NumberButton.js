@@ -7,7 +7,7 @@ const NumberButton = ({ digit, onClick, className }) => {
     }
 
     return (
-        <button className={className} onClick={pressButton}>
+        <button className={className} onClick={pressButton} title={`${digit}`}>
             {digit}
         </button>
     )

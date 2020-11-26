@@ -239,6 +239,7 @@ export default function CalculatorComponent() {
         className={`entry-div ${equalsPressed ? "entry-div-equals" : ""} ${
           largeNumber ? "entry-div-large" : ""
         }`}
+        title="answer"
       >
         {calculationEntry}
       </div>
